@@ -22,7 +22,7 @@ def choose_month():
 # prepare input data
 def get_content_data():
     content = ''
-    with open(choose_month(), 'r') as a_file:
+    with open(choose_month(), 'r', encoding='cp1250') as a_file:
         line = True
         while line:
             line = a_file.readline()
@@ -115,7 +115,6 @@ def make_sheet():
         save_location = Path.home() / 'Desktop'
         if save_location.exists():
             wb.save(f'{save_location}/{month} {year}.xlsx')
-            system(f'start {save_location}')
         else:
             logging.error(f'Slozka {save_location} neexistuje')
 
@@ -123,7 +122,6 @@ def make_sheet():
 
 
 root = tk.Tk()
-root.iconbitmap('inc/swh.ico')
 
 
 def center_window(window, w, h):
